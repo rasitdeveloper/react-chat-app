@@ -3,6 +3,10 @@ import { useChat } from "../contexts/ChatContext";
 import { sendMessage } from "../socketApi";
 
 function Form() {
+
+  var today = new Date();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " " + today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
   const { setChat } = useChat();
   const [text, setText] = useState("");
 
@@ -13,7 +17,7 @@ function Form() {
       return;
     }
 
-    setChat((prev) => [...prev, { text, isFromMe: true }]);
+    setChat((prev) => [...prev, { text, isFromMe: true, date: time }]);
     sendMessage(text);
     setText("");
   };

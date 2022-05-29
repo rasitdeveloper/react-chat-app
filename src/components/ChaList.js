@@ -14,6 +14,7 @@ function ChaList() {
             className={`chat-item-container ${item.isFromMe ? "from-me" : ""}`}
           >
             <div className="chat-item">{item.text}</div>
+            <div className="chat-item">{item.date}</div>
           </div>
         ))}
       </ScrollableFeed>
