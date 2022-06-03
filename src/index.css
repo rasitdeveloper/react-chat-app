@@ -41,6 +41,14 @@
   margin: 5px;
 }
 
+.loading-item {
+  background-color: #72a5d2;
+  display: block;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  float: right;
+}
+
 .chat-item-container {
   display: flex;
 }
@@ -48,3 +56,5 @@
 .chat-item-container.from-me {
   justify-content: flex-end;
 }
+
+

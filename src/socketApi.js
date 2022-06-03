@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 
 let socket;
 export const init = () => {
-  socket = io(process.env.REACT_APP_WS_EDNPOINT, {
+  socket = io("http://localhost:8080", {
     transports: ["websocket"],
   });
 

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useChat } from "../contexts/ChatContext";
+import React, { useState, useEffect } from "react";
+import { useChat, useLoading } from "../contexts/ChatContext";
 import { sendMessage } from "../socketApi";
+import InputEmoji from "react-input-emoji";
 
 function Form() {
 
@@ -10,8 +11,19 @@ function Form() {
   const { setChat } = useChat();
   const [text, setText] = useState("");
 
+  const { setIsLoading } = useLoading();
+
+  
+  useEffect(() => {
+    if(text !== "") {
+      setIsLoading(true)
+    } else {
+      setIsLoading(false)
+    }
+  }, [text])
+  
+ 
   const handleSubmit = (e) => {
-    e.preventDefault();
 
     if (!text) {
       return;
@@ -24,13 +36,13 @@ function Form() {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <input
-          className="message"
+      <InputEmoji
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={setText}
+          cleanOnEnter
+          onEnter={handleSubmit}
+          placeholder="Type a message"
         />
-      </form>
     </div>
   );
 }
