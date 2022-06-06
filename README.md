@@ -1,5 +1,5 @@
 # Live Demo
-https://melodic-starburst-8bd656.netlify.app/
+https://frk-myreactchatapp.netlify.app/
 
 # Getting Started with Create React App
 
