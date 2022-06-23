@@ -19,6 +19,13 @@ io.on("connection", (socket) => {
 		socket.emit("message-list", data);
 	});
 
+	socket.on("new-typing", (message) => {
+		console.log(message);
+		Messages.upsert({ message });
+
+		socket.broadcast.emit("receive-typing", message);
+	});
+
 	socket.on("new-message", (message) => {
 		console.log(message);
 		Messages.upsert({ message });

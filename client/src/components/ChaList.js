@@ -1,11 +1,11 @@
 import React from "react";
-import { useChat, useLoading } from "../contexts/ChatContext";
+import { useChat, useTypingData } from "../contexts/ChatContext";
 import ScrollableFeed from "react-scrollable-feed";
 
 
 function ChaList() {
   const { chat } = useChat();
-  const { isLoading } = useLoading();
+  const { typingData } = useTypingData();
   
   
   return (
@@ -23,7 +23,8 @@ function ChaList() {
             
           </div>
         ))}
-        {isLoading ? <div className="loading-item">Typing...</div> : "" }
+        {typingData === "yes" ? <div className="chat-item">Typing...</div> : "" }
+        
       </ScrollableFeed>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useChat, useLoading } from "../contexts/ChatContext";
-import { sendMessage } from "../socketApi";
+import { useChat, useTyping } from "../contexts/ChatContext";
+import { sendMessage, sendTypingInfo } from "../socketApi";
 import InputEmoji from "react-input-emoji";
 
 function Form() {
@@ -11,14 +11,16 @@ function Form() {
   const { setChat } = useChat();
   const [text, setText] = useState("");
 
-  const { setIsLoading } = useLoading();
+  const { setIsTyping } = useTyping();
 
   
   useEffect(() => {
     if(text !== "") {
-      setIsLoading(true)
+      setIsTyping(true)
+      sendTypingInfo("yes")
     } else {
-      setIsLoading(false)
+      setIsTyping(false)
+      sendTypingInfo("no")
     }
   }, [text])
   
